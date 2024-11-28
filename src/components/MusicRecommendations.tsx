@@ -1,3 +1,4 @@
+import React from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 import { useMusicStore } from '../store/musicStore';
 import { getRecommendations } from "../services/spotify"; // Assuming the getRecommendations function is imported
