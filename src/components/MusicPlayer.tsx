@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { Play, Pause, ExternalLink } from 'lucide-react';
 import { useMusicStore } from '../store/musicStore';
 

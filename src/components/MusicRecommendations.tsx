@@ -1,4 +1,3 @@
-import React from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 import { useMusicStore } from '../store/musicStore';
 

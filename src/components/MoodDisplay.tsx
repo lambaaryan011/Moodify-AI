@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Smile, Music, AlertCircle } from 'lucide-react';
 import { useMoodStore } from '../store/moodStore';
 import { useMusicStore } from '../store/musicStore';
