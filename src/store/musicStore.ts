@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export interface Track {
+interface Track {
   id: string;
   name: string;
   artist: string;
