@@ -14,7 +14,7 @@ export default function Header() {
           </div>
           <button className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition-all">
             <UserCircle2 className="h-5 w-5" />
-            <span>Sign In</span>
+            <span>SIGN IN </span>
           </button>
         </div>
       </div>
