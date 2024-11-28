@@ -5,11 +5,11 @@ interface MoodState {
   confidence: number;
   isProcessing: boolean;
   cameraEnabled: boolean;
-  micEnabled: boolean;
   setMood: (mood: string, confidence: number) => void;
   setProcessing: (processing: boolean) => void;
   setCameraEnabled: (enabled: boolean) => void;
-  setMicEnabled: (enabled: boolean) => void;
+  isDetecting: boolean;
+  setIsDetecting: (detecting: boolean) => void;
 }
 
 export const useMoodStore = create<MoodState>((set) => ({
@@ -17,9 +17,10 @@ export const useMoodStore = create<MoodState>((set) => ({
   confidence: 0,
   isProcessing: false,
   cameraEnabled: false,
-  micEnabled: false,
   setMood: (mood, confidence) => set({ currentMood: mood, confidence }),
   setProcessing: (processing) => set({ isProcessing: processing }),
   setCameraEnabled: (enabled) => set({ cameraEnabled: enabled }),
-  setMicEnabled: (enabled) => set({ micEnabled: enabled }),
+  isDetecting: false,
+  setIsDetecting: (detecting: boolean) => set({ isDetecting: detecting }),
 }));
+

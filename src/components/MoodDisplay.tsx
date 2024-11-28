@@ -18,11 +18,12 @@ export default function MoodDisplay() {
     setLoading(true);
     setError(null);
     try {
+      // Fetch the recommendations based on the current mood
       const tracks = await getRecommendations(currentMood);
-      setRecommendations(tracks);
+      setRecommendations(tracks);  // Set the fetched tracks in the store
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Failed to get recommendations');
-      setRecommendations([]);
+      setRecommendations([]); // Clear previous recommendations
     }
     setLoading(false);
   };
@@ -83,7 +84,7 @@ export default function MoodDisplay() {
           <span>Get Music Recommendations</span>
         </button>
 
-        <MusicRecommendations />
+        <MusicRecommendations />  {/* Music Recommendations Component */}
       </div>
     </div>
   );

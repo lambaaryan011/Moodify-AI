@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import { useMoodStore } from '../store/moodStore';
 import { initializeMoodDetection, detectMood } from '../services/moodDetection';
