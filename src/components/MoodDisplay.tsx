@@ -1,30 +1,17 @@
-import React, { useState } from 'react';
-import { Smile, Music, AlertCircle } from 'lucide-react';
+// 
+
+
+import { Smile, Music } from 'lucide-react';
 import { useMoodStore } from '../store/moodStore';
-import { useMusicStore } from '../store/musicStore';
-import { getRecommendations } from '../services/spotify';
-import MusicRecommendations from './MusicRecommendations';
 
 const moods = ['Happy', 'Energetic', 'Calm', 'Focused', 'Sad', 'Neutral'];
 
 export default function MoodDisplay() {
   const { currentMood, confidence, isProcessing } = useMoodStore();
-  const { setRecommendations, setLoading } = useMusicStore();
-  const [error, setError] = useState<string | null>(null);
 
-  const handleGetRecommendations = async () => {
-    if (!currentMood) return;
-    
-    setLoading(true);
-    setError(null);
-    try {
-      const tracks = await getRecommendations(currentMood);
-      setRecommendations(tracks);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : 'Failed to get recommendations');
-      setRecommendations([]);
-    }
-    setLoading(false);
+  const handleRedirectToPlaylist = () => {
+    // Redirect to the specified Spotify playlist URL
+    window.location.href = 'https://open.spotify.com/playlist/37i9dQZF1DX0XUfTFmNBRM';
   };
 
   return (
@@ -41,7 +28,7 @@ export default function MoodDisplay() {
         <div className="space-y-2">
           <label className="text-sm text-white/60">Emotion Confidence</label>
           <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-purple-500 to-violet-500 rounded-full transition-all duration-300"
               style={{ width: `${(confidence * 100)}%` }}
             />
@@ -53,8 +40,8 @@ export default function MoodDisplay() {
             <div
               key={mood}
               className={`${
-                currentMood === mood 
-                  ? 'bg-purple-600 text-white' 
+                currentMood === mood
+                  ? 'bg-purple-600 text-white'
                   : 'bg-white/5 text-white/80'
               } rounded-lg p-3 cursor-pointer hover:bg-white/10 transition-colors`}
             >
@@ -63,18 +50,11 @@ export default function MoodDisplay() {
           ))}
         </div>
 
-        {error && (
-          <div className="flex items-center space-x-2 text-red-400 bg-red-500/10 rounded-lg p-3">
-            <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <p className="text-sm">{error}</p>
-          </div>
-        )}
-
-        <button 
-          onClick={handleGetRecommendations}
+        <button
+          onClick={handleRedirectToPlaylist}
           className={`w-full flex items-center justify-center space-x-2 ${
-            currentMood 
-              ? 'bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700' 
+            currentMood
+              ? 'bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700'
               : 'bg-gray-600 cursor-not-allowed'
           } text-white rounded-lg py-3 px-4 transition-colors mt-4`}
           disabled={!currentMood}
@@ -82,8 +62,6 @@ export default function MoodDisplay() {
           <Music className="w-5 h-5" />
           <span>Get Music Recommendations</span>
         </button>
-
-        <MusicRecommendations />
       </div>
     </div>
   );

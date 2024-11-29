@@ -1,9 +1,8 @@
-import React from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 import { useMusicStore } from '../store/musicStore';
 
 export default function MusicRecommendations() {
-  const { recommendations, isLoading, setCurrentTrack } = useMusicStore();
+  const { recommendations, isLoading } = useMusicStore();
 
   if (isLoading) {
     // Loading state
@@ -40,7 +39,10 @@ export default function MusicRecommendations() {
                 className="w-16 h-16 rounded-md"
               />
               <button
-                onClick={() => setCurrentTrack(track)}
+                onClick={() => {
+                  // Redirect to the provided Spotify Hindi playlist
+                  window.location.href = 'https://open.spotify.com/playlist/37i9dQZF1DX0XUfTFmNBRM';
+                }}
                 className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
                 aria-label={`Play ${track.name}`}
               >
@@ -71,3 +73,41 @@ export default function MusicRecommendations() {
     </div>
   );
 }
+
+
+// import React from 'react';
+// import { Play } from 'lucide-react';
+
+// const MusicRecommendations: React.FC = () => {
+//   return (
+//     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+//       <div
+//         className="bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-colors group"
+//       >
+//         <div className="flex space-x-4">
+//           {/* Play Button */}
+//           <div className="relative flex-shrink-0">
+//             <img
+//               src="fallback-image-url.jpg" // Replace with an appropriate fallback image URL
+//               alt="Hindi Playlist"
+//               className="w-16 h-16 rounded-md"
+//             />
+//             <button
+//               onClick={() => {
+//                 // Redirect to the provided Spotify Hindi playlist
+//                 window.location.href = 'https://open.spotify.com/playlist/37i9dQZF1DX0XUfTFmNBRM';
+//               }}
+//               className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+//               aria-label="Play Hindi Playlist"
+//             >
+//               <Play className="w-8 h-8 text-white" />
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default MusicRecommendations;
+
